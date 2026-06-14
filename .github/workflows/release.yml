@@ -26,21 +26,15 @@ jobs:
           mkdir upload
           mv packages/* upload/
 
-      - name: Extract Version
-        id: get_version
-        run: |
-          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" _build/Payload/*.app/Info.plist)
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
-
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Feather v${{ env.VERSION }}
-          tag_name: v${{ env.VERSION }}
+          name: Feather vdsfgr 
+          tag_name: vsdfg
           files: |
             upload/*
           generate_release_notes: true
           fail_on_unmatched_files: true
-          draft: true
+          draft: false
         env:
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
